@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  minecraft-forge-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: minecraft-forge-server
+    ports:
+      - "25565:25565"
+    volumes:
+      - ./server:/minecraft
+    environment:
+      - MINECRAFT_EULA=true
+      - MINECRAFT_MAX_MEMORY=1024M
+      - MINECRAFT_MIN_MEMORY=1024M
+    restart: unless-stopped
